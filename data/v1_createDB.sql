@@ -4,7 +4,7 @@ create table LesTaux (
     typeZone varchar (50),
     tauxZone decimal (4,2) not null,
     constraint pk_Tau_typeZone primary key (typeZone),
-    constraint ck_Tau_tauxZone check (tauxZone >= 0 and tauxZone <=1),
+    constraint ck_Tau_tauxZone check (tauxZone >= 0),
     constraint ck_Tau_cat check (typeZone in ('Orchestre', 'Balcon', 'Poulailler'))
 );
 
@@ -91,7 +91,7 @@ from LesTickets;
 
 --vue du prix de chaque ticket reservé
 create view LesTicketsView (noTic, prixTic) as
-select noTic, round(((prixBaseSpec * (1 - promoRep) * (1 + tauxZone)) * (1 - promoSit)),2) as prixTic
+select noTic, round(((prixBaseSpec * (1 - promoRep) * tauxZone) * (1 - promoSit)),2) as prixTic
 from LesTickets
 join LesPlaces
 using (noPlace, noRang)
