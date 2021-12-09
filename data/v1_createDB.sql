@@ -1,4 +1,5 @@
--- TODO 1.3 : Créer les tables manquantes et modifier celles ci-dessous
+PRAGMA foreign_keys = true;
+
 create table LesTaux (
     typeZone varchar (50),
     tauxZone decimal (4,2) not null,
@@ -50,6 +51,7 @@ create table LesRepresentations (
 
 create table LesDossiers (
     noDos integer,
+    dateCrea date not null,
     constraint pk_Dos_noD primary key (noDos)
 );
 
@@ -80,39 +82,40 @@ create table LesTickets (
 
 -- TODO 1.4 : Créer une vue LesRepresentations ajoutant le nombre de places disponible et d'autres possibles attributs calculés.
 
-CREATE VIEW nombrePlaces (
-    noZone,
-    nombrePlace
-)
-AS
-    SELECT noZone, (COUNT(noPlace)*COUNT(noRang))
-        FROM lesPlaces
-    GROUP BY noZone;
+--vue des places restantes par date de representations
+create view LesRepresentationsView (dateRep, noPlace, noRang) as
+select dateRep, noPlace, noRang
+from LesRepresentations
+cross join LesPlaces
+except
+select dateRep, noPlace, noRang
+from LesTickets;
 
-CREATE VIEW lesPlacesLibres (
-    noZone,
-    placeRestantes
-)
-AS
-    SELECT noZone, (COUNT(noPlace)*COUNT(noRang))
-        FROM lesPlaces
-    GROUP BY noZone
-    EXCEPT
-    SELECT noZone, (COUNT(lesTickets.noPlace)*COUNT(lesTickets.noRang))
-        FROM lesTickets
-    JOIN lesPlaces USING(noPlace, noRang)
-    GROUP BY noZone;
+--vue du prix de chaque ticket reservé
+create view LesTicketsView (noTic, prixTic) as
+select noTic, ((prixBaseSpec * (1 - promoRep) * (1 + tauxZone)) * (1 - promoSit)) as prixTic
+from LesTickets
+join LesPlaces
+using (noPlace, noRang)
+join LesZones
+using (noZone)
+join LesTaux
+using (typeZone)
+join LesRepresentations
+using (dateRep)
+join LesInformations
+using (noSpec)
+join LesSituations
+using (situation);
+
+--vue du prix total de chaque dossier
+create view LesDossiersView (noDos, prixGlob) as
+select noDos, SUM(prixTic) as prixGlob
+from LesTickets
+join LesTicketsView
+using (noTic)
+group by noDos;
 
 -- TODO 3.3 : Ajouter les éléments nécessaires pour créer le trigger (attention, syntaxe SQLite différent qu'Oracle)
 
 -- Trigger pour ne pas vendre un ticket si le nombre de places max est atteint
-
-CREATE TRIGGER IF NOT EXISTS update_Tickets BEFORE INSERT ON LesTickets
-    BEGIN
-        SELECT
-            CASE
-                WHEN (SELECT placeRestantes FROM lesPlacesLibres WHERE noZone = lesPlacesLibres.noZone) = 0
-                THEN
-                    RAISE ( ABORT, 'nombre de places insuffisante' )
-    END;
-END;
