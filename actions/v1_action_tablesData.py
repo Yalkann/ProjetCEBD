@@ -38,9 +38,6 @@ class AppTablesDataV1(QDialog):
     @pyqtSlot()
     def refreshAllTablesV1(self):
 
-        # TODO 1.3 : modifier pour afficher les nouveaux éléments (il faut aussi changer le fichier .ui correspondant)
-        # TODO 1.4 : modifier pour afficher les nouveaux éléments (il faut aussi changer le fichier .ui correspondant)
-        # TODO 1.5 : modifier pour afficher les nouveaux éléments (il faut aussi changer le fichier .ui correspondant)
         self.refreshTable(self.ui.label_Taux, self.ui.tableTaux,
                           "SELECT typeZone, tauxZone "
                           "FROM LesTaux")
@@ -56,9 +53,19 @@ class AppTablesDataV1(QDialog):
         self.refreshTable(self.ui.label_Representations, self.ui.tableRepresentations,
                           "SELECT dateRep, promoRep, noSpec "
                           "FROM LesRepresentations")
+        self.refreshTable(self.ui.label_RepresentationsView, self.ui.tableRepresentationsView,
+                          "SELECT dateRep, noPlace, noRang "
+                          "FROM LesRepresentationsView")
+        self.refreshTable(self.ui.label_Dossiers, self.ui.tableDossiers,
+                          "SELECT noDos, dateCrea, prixGlob "
+                          "FROM LesDossiers "
+                          "JOIN LesDossiersView "
+                          "USING (noDos)")
         self.refreshTable(self.ui.label_Situations, self.ui.tableSituations,
                           "SELECT situation, promoSit "
                           "FROM LesSituations")
         self.refreshTable(self.ui.label_Tickets, self.ui.tableTickets,
-                          "SELECT noTic, dateAchat, situation, dateRep, noPlace, noRang, noDos "
-                          "FROM LesTickets")
+                          "SELECT noTic, dateAchat, prixTic, situation, dateRep, noPlace, noRang, noDos "
+                          "FROM LesTickets "
+                          "JOIN  LesTicketsView "
+                          "USING (noTic)")
