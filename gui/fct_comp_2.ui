@@ -40,22 +40,17 @@
       <widget class="QComboBox" name="comboBox">
        <item>
         <property name="text">
-         <string>-Aucune-</string>
+         <string>Poulailler</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>noPlace</string>
+         <string>Orchestre</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>noRang</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>noZone</string>
+         <string>Balcon</string>
         </property>
        </item>
       </widget>
@@ -118,8 +113,8 @@
    <slot>refreshResult()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>364</x>
-     <y>52</y>
+     <x>589</x>
+     <y>71</y>
     </hint>
     <hint type="destinationlabel">
      <x>444</x>
