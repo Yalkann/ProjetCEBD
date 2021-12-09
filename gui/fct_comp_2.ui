@@ -40,17 +40,17 @@
       <widget class="QComboBox" name="comboBox">
        <item>
         <property name="text">
-         <string>Poulailler</string>
+         <string>poulailler</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Orchestre</string>
+         <string>orchestre</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Balcon</string>
+         <string>balcon</string>
         </property>
        </item>
       </widget>
