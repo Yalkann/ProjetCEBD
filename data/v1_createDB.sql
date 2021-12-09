@@ -80,8 +80,6 @@ create table LesTickets (
         on delete cascade
 );
 
--- TODO 1.4 : Créer une vue LesRepresentations ajoutant le nombre de places disponible et d'autres possibles attributs calculés.
-
 --vue des places restantes par date de representations
 create view LesRepresentationsView (dateRep, noPlace, noRang) as
 select dateRep, noPlace, noRang
@@ -93,7 +91,7 @@ from LesTickets;
 
 --vue du prix de chaque ticket reservé
 create view LesTicketsView (noTic, prixTic) as
-select noTic, ((prixBaseSpec * (1 - promoRep) * (1 + tauxZone)) * (1 - promoSit)) as prixTic
+select noTic, round(((prixBaseSpec * (1 - promoRep) * (1 + tauxZone)) * (1 - promoSit)),2) as prixTic
 from LesTickets
 join LesPlaces
 using (noPlace, noRang)
@@ -110,22 +108,8 @@ using (situation);
 
 --vue du prix total de chaque dossier
 create view LesDossiersView (noDos, prixGlob) as
-select noDos, SUM(prixTic) as prixGlob
+select noDos, round(SUM(prixTic),2) as prixGlob
 from LesTickets
 join LesTicketsView
 using (noTic)
 group by noDos;
-
--- TODO 3.3 : Ajouter les éléments nécessaires pour créer le trigger (attention, syntaxe SQLite différent qu'Oracle)
-
--- Trigger pour ne pas vendre un ticket si le nombre de places max est atteint
-CREATE TRIGGER IF NOT EXISTS update_Tickets BEFORE INSERT ON LesTickets
-    BEGIN
-        SELECT
-            CASE
-                WHEN (SELECT noPlace FROM LesRepresentationsView
-                WHERE NEW.dateRep = LesRepresentationsView.dateRep) IS NULL
-                THEN
-                    RAISE ( ABORT, 'nombre de places insuffisante' )
-    END;
-END;
