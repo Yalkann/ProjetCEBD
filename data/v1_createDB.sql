@@ -58,7 +58,7 @@ create table LesSituations (
     promoSit decimal (4,2),
     constraint pk_Sit_sit primary key (situation),
     constraint ck_Sit_pro check (promoSit >= 0 and promoSit <=1),
-    constraint pk_Sit_sit check (situation in ('adhérent', 'étudiant', 'scolaire', 'militaire', 'sénior', 'sans réduction'))
+    constraint pk_Sit_sit check (situation in ('adherent', 'etudiant', 'scolaire', 'militaire', 'senior', 'sans reduction'))
 );
 
 create table LesTickets (
