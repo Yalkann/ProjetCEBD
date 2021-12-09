@@ -89,20 +89,30 @@ AS
         FROM lesPlaces
     GROUP BY noZone;
 
-CREATE VIEW LesPlacesLibres (
+CREATE VIEW lesPlacesLibres (
     noZone,
-    PlaceRestantes
+    placeRestantes
 )
 AS
     SELECT noZone, (COUNT(noPlace)*COUNT(noRang))
         FROM lesPlaces
     GROUP BY noZone
     EXCEPT
-    SELECT (COUNT(lesTickets.noPlace)*COUNT(lesTickets.noRang))
+    SELECT noZone, (COUNT(lesTickets.noPlace)*COUNT(lesTickets.noRang))
         FROM lesTickets
     JOIN lesPlaces USING(noPlace, noRang)
     GROUP BY noZone;
 
 -- TODO 3.3 : Ajouter les éléments nécessaires pour créer le trigger (attention, syntaxe SQLite différent qu'Oracle)
 
+-- Trigger pour ne pas vendre un ticket si le nombre de places max est atteint
 
+CREATE TRIGGER IF NOT EXISTS update_Tickets BEFORE INSERT ON LesTickets
+    BEGIN
+        SELECT
+            CASE
+                WHEN (SELECT placeRestantes FROM lesPlacesLibres WHERE noZone = lesPlacesLibres.noZone) = 0
+                THEN
+                    RAISE ( ABORT, 'nombre de places insuffisante' )
+    END;
+END;
