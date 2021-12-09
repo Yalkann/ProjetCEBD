@@ -80,4 +80,29 @@ create table LesTickets (
 
 -- TODO 1.4 : Créer une vue LesRepresentations ajoutant le nombre de places disponible et d'autres possibles attributs calculés.
 
+CREATE VIEW nombrePlaces (
+    noZone,
+    nombrePlace
+)
+AS
+    SELECT noZone, (COUNT(noPlace)*COUNT(noRang))
+        FROM lesPlaces
+    GROUP BY noZone;
+
+CREATE VIEW LesPlacesLibres (
+    noZone,
+    PlaceRestantes
+)
+AS
+    SELECT noZone, (COUNT(noPlace)*COUNT(noRang))
+        FROM lesPlaces
+    GROUP BY noZone
+    EXCEPT
+    SELECT (COUNT(lesTickets.noPlace)*COUNT(lesTickets.noRang))
+        FROM lesTickets
+    JOIN lesPlaces USING(noPlace, noRang)
+    GROUP BY noZone;
+
 -- TODO 3.3 : Ajouter les éléments nécessaires pour créer le trigger (attention, syntaxe SQLite différent qu'Oracle)
+
+
