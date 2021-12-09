@@ -3,7 +3,7 @@ INSERT INTO LesTaux VALUES('Balcon', 1);
 INSERT INTO LesTaux VALUES('Orchestre', 0.5);
 INSERT INTO LesTaux VALUES('Poulailler', 0);
 
-INSERT INTO LesZones VALUES(1, 'Poulailler");
+INSERT INTO LesZones VALUES(1, 'Poulailler');
 INSERT INTO LesZones VALUES(2, 'Orchestre');
 INSERT INTO LesZones VALUES(3, 'Balcon');
 
