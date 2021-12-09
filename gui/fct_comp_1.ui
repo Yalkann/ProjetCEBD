@@ -40,7 +40,28 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_fct_comp_1"/>
+      <widget class="QComboBox" name="lineEdit_fct_comp_1">
+       <item>
+        <property name="text">
+         <string>-Aucune-</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>noPlace</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>noRang</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>noZone</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_fct_comp_1">
