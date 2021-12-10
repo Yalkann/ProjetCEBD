@@ -1,0 +1,7 @@
+SELECT * FROM LesSituations;
+SELECT * FROM LesTaux;
+SELECT * FROM LesZones;
+SELECT * FROM LesPlaces;
+SELECT * FROM LesRepresentations;
+SELECT * FROM LesDossiers;
+SELECT * FROM LesTickets;
