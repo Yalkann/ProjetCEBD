@@ -12,6 +12,9 @@ from actions.v0_action_fct_comp_1_partie_1 import AppFctComp1Partie1
 from actions.v0_action_fct_comp_2_partie_1 import AppFctComp2Partie1
 from actions.v1_action_fct_develop_1_partie_2 import AppFctDev1Partie2
 from actions.v1_action_fct_develop_2_partie_2 import AppFctDev2Partie2
+from actions.v1_action_fct_develop_1_partie_3 import AppFctDev1Partie3
+from actions.v1_action_fct_develop_2_partie_3 import AppFctDev2Partie3
+from actions.v1_action_trigger_develop_3_partie_3 import AppTriggerDev3Partie3
 
 # Classe utilisée pour lancer la fenêtre principale de l'application et définir ses actions
 class AppWindow(QMainWindow):
@@ -31,6 +34,9 @@ class AppWindow(QMainWindow):
     fct_comp_2_dialog = None
     fct_dev_1_2_dialog = None
     fct_dev_2_2_dialog = None
+    fct_dev_1_3_dialog = None
+    fct_dev_2_3_dialog = None
+    trigger_dev_3_3_dialog = None
 
     # Constructeur
     def __init__(self):
@@ -112,6 +118,7 @@ class AppWindow(QMainWindow):
         try:
             # On exécute les requêtes du fichier de création
             db.updateDBfile(self.data, "data/v1_createDB.sql")
+            db.updateDBfileTrigger(self.data, "data/create_trigger.sql")
 
         except Exception as e:
              # En cas d'erreur, on affiche un message
@@ -161,29 +168,9 @@ class AppWindow(QMainWindow):
             # On émet le signal indiquant la modification de la table
             self.changedValue.emit()
 
-    # En case de clic sur le bouton de requetes
-    def requetesDBV1(self):
-
-        try:
-            # On exécute les requêtes du fichier de suppression
-            db.updateDBfile(self.data, "data/requete.sql")
-
-        except Exception as e:
-            # En cas d'erreur, on affiche un message
-            display.refreshLabel(self.ui.label_2, "Erreur lors des requetes de la base de données V1: " + repr(e) + ".")
-
-        else:
-            # Si tout s'est bien passé, on affiche le message de succès (le commit est automatique pour un DROP TABLE)
-            display.refreshLabel(self.ui.label_2, "Les requetes ont été effectué avec succès")
-            # On émet le signal indiquant la modification de la table
-            self.changedValue.emit()
-
     ####################################################################################################################
     # Ouverture des autres fenêtres de l'application
     ####################################################################################################################
-
-    # TODO 2 : ajouter la définition des méthodes déclenchées lors des clicks sur les boutons de la partie 2
-    # TODO 3 : ajouter la définition des méthodes déclenchées lors des clicks sur les boutons de la partie 3
 
     # En cas de clic sur le bouton de visualisation des données
     def openDataV0(self):
@@ -243,11 +230,29 @@ class AppWindow(QMainWindow):
         self.fct_dev_2_2_dialog = AppFctDev2Partie2(self.data)
         self.fct_dev_2_2_dialog.show()
 
+    # En cas de clic sur la fonction à développer 1 de la partie 3
+    def open_fct_dev_1_3(self):
+        if self.fct_dev_1_3_dialog is not None:
+            self.fct_dev_1_3_dialog.close()
+        self.fct_dev_1_3_dialog = AppFctDev1Partie3(self.data)
+        self.fct_dev_1_3_dialog.show()
+
+    # En cas de clic sur la fonction à développer 2 de la partie 3
+    def open_fct_dev_2_3(self):
+        if self.fct_dev_2_3_dialog is not None:
+            self.fct_dev_2_3_dialog.close()
+        self.fct_dev_2_3_dialog = AppFctDev2Partie3(self.data)
+        self.fct_dev_2_3_dialog.show()
+    # En cas de clicl sur le test du trigger développer 3 de la partie 3
+    def open_trigger_dev_3_3(self):
+        if self.trigger_dev_3_3_dialog is not None:
+            self.trigger_dev_3_3_dialog.close()
+        self.trigger_dev_3_3_dialog = AppTriggerDev3Partie3(self.data)
+        self.trigger_dev_3_3_dialog.show()
+
     ####################################################################################################################
     # Fonctions liées aux évènements (signal/slot/event)
     ####################################################################################################################
-
-    # TODO 3 : penser à fermer comme il faut les fenêtres de la partie 3
 
     # On intercepte l'évènement de cloture de la fenêtre principale pour intercaler quelques actions avant sa fermeture
     def closeEvent(self, event):
@@ -267,6 +272,12 @@ class AppWindow(QMainWindow):
             self.fct_dev_1_2_dialog.close()
         if (self.fct_dev_2_2_dialog is not None):
             self.fct_dev_2_2_dialog.close()
+        if (self.fct_dev_1_3_dialog is not None):
+            self.fct_dev_1_3_dialog.close()
+        if (self.fct_dev_2_3_dialog is not None):
+            self.fct_dev_2_3_dialog.close()
+        if (self.trigger_dev_3_3_dialog is not None):
+            self.trigger_dev_3_3_dialog.close()
 
         # On ferme proprement la base de données
         self.data.close()
