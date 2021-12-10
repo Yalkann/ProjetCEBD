@@ -27,6 +27,7 @@ INSERT INTO LesPlaces VALUES(3, 4, 3);
 INSERT INTO LesPlaces VALUES(4, 4, 3);
 INSERT INTO LesPlaces VALUES(5, 4, 3);
 
+
 INSERT INTO LesInformations VALUES(1, 'How to be a parisian ?', 25);
 INSERT INTO LesInformations VALUES(2, 'Je parle toute seule', 20);
 
@@ -51,5 +52,22 @@ INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VA
 INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('26/11/2008 20:18:20', 'scolaire', '28/11/2008 20:00', 4, 2, 1);
 INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('22/11/2008 9:46:25', 'militaire', '29/11/2008 21:00', 5, 1, 2);
 INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('22/11/2008 9:46:25', 'etudiant', '29/11/2008 21:00', 4, 1, 2);
-INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('22/11/2008 9:46:25', 'adherent', '29/11/2008 21:00', 4, 1, 2);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('22/11/2008 9:46:25', 'adherent', '29/11/2008 21:00', 4, 2, 2);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 2, 1, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 1, 1, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 1, 2, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 1, 3, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 1, 4, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 2, 2, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 2, 3, 3);
 INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 2, 4, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 3, 1, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 3, 2, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 3, 3, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 3, 4, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 4, 3, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 4, 4, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 5, 1, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 5, 2, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 5, 3, 3);
+INSERT INTO LesTickets(dateAchat, situation, dateRep, noPlace, noRang, noDos) VALUES('23/11/2008 14:16:18', 'senior', '29/11/2008 21:00', 5, 4, 3);
