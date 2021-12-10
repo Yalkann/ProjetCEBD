@@ -39,13 +39,12 @@ class AppFctDev2Partie2(QDialog):
         display.refreshLabel(self.ui.label_dev_2_2, "")
         if not self.ui.lineEditDev2.currentText():
             self.ui.tableDev_2_2.setRowCount(0)
-            display.refreshLabel(self.ui.label_dev_2_2, "Veuillez indiquer un nom de catégorie")
+            display.refreshLabel(self.ui.label_dev_2_2, "Veuillez indiquer un nom de Spectacle")
         else:
             try:
                 cursor = self.data.cursor()
                 result = cursor.execute(
-                    "SELECT ",
-                    [self.ui.lineEditDev2.currentText()])
+                        [self.ui.lineEditDev2.currentText()])
             except Exception as e:
                 self.ui.tableDev_2_2.setRowCount(0)
                 display.refreshLabel(self.ui.label_dev_2_2, "Impossible d'afficher les résultats : " + repr(e))
@@ -57,4 +56,8 @@ class AppFctDev2Partie2(QDialog):
     def refreshDev2Partie2(self):
 
         self.refreshTable(self.ui.label_dev_2_2, self.ui.tableDev_2_2,
-                          "")
+                        "SELECT dateRep, noPlace, noRang "
+                        "FROM LesInformations "
+                        "JOIN LesRepresentations USING (noSpec) "
+                        "CROSS JOIN LesPlaces ")
+
