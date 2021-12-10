@@ -1,4 +1,3 @@
-
 import sqlite3
 from utils import display
 from PyQt5.QtWidgets import QDialog
@@ -6,16 +5,17 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5 import uic
 
 # Classe permettant d'afficher la fenêtre de visualisation des données
-class AppTablesDataV0(QDialog):
+
+class AppFctDev2Partie2(QDialog):
 
     # Constructeur
-    def __init__(self, data:sqlite3.Connection):
+    def __init__(self, data: sqlite3.Connection):
         super(QDialog, self).__init__()
-        self.ui = uic.loadUi("gui/v0_tablesData.ui", self)
+        self.ui = uic.loadUi("gui/v1_fct_dev_2_2.ui", self)
         self.data = data
 
         # On met à jour l'affichage avec les données actuellement présentes dans la base
-        self.refreshAllTablesV0()
+        self.refreshDev2Partie2()
 
     ####################################################################################################################
     # Méthodes permettant de rafraichir les différentes tables
@@ -33,14 +33,28 @@ class AppTablesDataV0(QDialog):
         else:
             display.refreshGenericData(table, result)
 
-
     # Fonction permettant de mettre à jour toutes les tables
     @pyqtSlot()
-    def refreshAllTablesV0(self):
+    def refreshResultDev2(self):
+        display.refreshLabel(self.ui.label_dev_2_2, "")
+        if not self.ui.lineEditDev2.currentText():
+            self.ui.tableDev_2_2.setRowCount(0)
+            display.refreshLabel(self.ui.label_dev_2_2, "Veuillez indiquer un nom de catégorie")
+        else:
+            try:
+                cursor = self.data.cursor()
+                result = cursor.execute(
+                    "SELECT ",
+                    [self.ui.lineEditDev2.currentText()])
+            except Exception as e:
+                self.ui.tableDev_2_2.setRowCount(0)
+                display.refreshLabel(self.ui.label_dev_2_2, "Impossible d'afficher les résultats : " + repr(e))
+            else:
+                i = display.refreshGenericData(self.ui.tableDev_2_2, result)
+                if i == 0:
+                    display.refreshLabel(self.ui.label_dev_2_2, "Aucun résultat")
 
-        self.refreshTable(self.ui.label_representations, self.ui.tableRepresentations,
-                          "SELECT noSpec, nomSpec, dateRep, promoRep, prixBaseSpec, prixRep "
-                          "FROM V0_LesRepresentations")
-        self.refreshTable(self.ui.label_places, self.ui.tablePlaces,
-                          "SELECT noPlace, noRang, noZone, catZone, tauxZone "
-                          "FROM V0_LesPlaces")
+    def refreshDev2Partie2(self):
+
+        self.refreshTable(self.ui.label_dev_2_2, self.ui.tableDev_2_2,
+                          "")

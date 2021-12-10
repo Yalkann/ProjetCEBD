@@ -6,16 +6,16 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5 import uic
 
 # Classe permettant d'afficher la fenêtre de visualisation des données
-class AppTablesDataV0(QDialog):
+class AppFctDev1Partie2(QDialog):
 
     # Constructeur
     def __init__(self, data:sqlite3.Connection):
         super(QDialog, self).__init__()
-        self.ui = uic.loadUi("gui/v0_tablesData.ui", self)
+        self.ui = uic.loadUi("gui/v1_fct_dev_1_2.ui", self)
         self.data = data
 
         # On met à jour l'affichage avec les données actuellement présentes dans la base
-        self.refreshAllTablesV0()
+        self.refreshDev1Partie2()
 
     ####################################################################################################################
     # Méthodes permettant de rafraichir les différentes tables
@@ -36,11 +36,18 @@ class AppTablesDataV0(QDialog):
 
     # Fonction permettant de mettre à jour toutes les tables
     @pyqtSlot()
-    def refreshAllTablesV0(self):
+    def refreshDev1Partie2(self):
 
-        self.refreshTable(self.ui.label_representations, self.ui.tableRepresentations,
-                          "SELECT noSpec, nomSpec, dateRep, promoRep, prixBaseSpec, prixRep "
-                          "FROM V0_LesRepresentations")
-        self.refreshTable(self.ui.label_places, self.ui.tablePlaces,
-                          "SELECT noPlace, noRang, noZone, catZone, tauxZone "
-                          "FROM V0_LesPlaces")
+        self.refreshTable(self.ui.label_dev_1_2, self.ui.tableDev_1_2,
+                          "WITH SansRes AS (" 
+                          "SELECT dateRep "
+                          "FROM LesRepresentations "
+                          "EXCEPT "
+                          "SELECT dateRep "
+                          "FROM LesTickets) "
+                          "SELECT noSpec, nomSpec, dateRep "
+                          "FROM SansRes "
+                          "JOIN LesRepresentations "
+                          "USING (dateRep) "
+                          "JOIN LesInformations "
+                          "USING (noSpec)")
