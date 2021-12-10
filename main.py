@@ -106,7 +106,7 @@ class AppWindow(QMainWindow):
 
     ###################################### Actions BD V1 #######################################
 
-        # Action en cas de clic sur le bouton de création de base de données (V1)
+    # Action en cas de clic sur le bouton de création de base de données (V1)
     def createDBV1(self):
 
         try:
@@ -158,6 +158,23 @@ class AppWindow(QMainWindow):
         else:
             # Si tout s'est bien passé, on affiche le message de succès (le commit est automatique pour un DROP TABLE)
             display.refreshLabel(self.ui.label_2, "La base de données V1 a été supprimée avec succès.")
+            # On émet le signal indiquant la modification de la table
+            self.changedValue.emit()
+
+    # En case de clic sur le bouton de requetes
+    def requetesDBV1(self):
+
+        try:
+            # On exécute les requêtes du fichier de suppression
+            db.updateDBfile(self.data, "data/requete.sql")
+
+        except Exception as e:
+            # En cas d'erreur, on affiche un message
+            display.refreshLabel(self.ui.label_2, "Erreur lors des requetes de la base de données V1: " + repr(e) + ".")
+
+        else:
+            # Si tout s'est bien passé, on affiche le message de succès (le commit est automatique pour un DROP TABLE)
+            display.refreshLabel(self.ui.label_2, "Les requetes ont été effectué avec succès")
             # On émet le signal indiquant la modification de la table
             self.changedValue.emit()
 
