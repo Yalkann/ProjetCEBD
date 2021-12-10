@@ -39,7 +39,6 @@
      <widget class="QLabel" name="label">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -159,7 +158,6 @@
      <widget class="QLabel" name="label_11">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -289,7 +287,6 @@
      <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -386,7 +383,6 @@
      <widget class="QLabel" name="label_4">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -479,7 +475,6 @@
      <widget class="QLabel" name="label_8">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -495,7 +490,6 @@
      <widget class="QLabel" name="label_7">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -514,7 +508,6 @@
      <widget class="QLabel" name="label_9">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -540,7 +533,6 @@
      <widget class="QLabel" name="label_5">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -640,7 +632,6 @@
      <widget class="QLabel" name="label_6">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -730,7 +721,6 @@
      <widget class="QLabel" name="label_10">
       <property name="font">
        <font>
-        <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
@@ -813,8 +803,8 @@
    <slot>createDBV0()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>313</x>
-     <y>235</y>
+     <x>375</x>
+     <y>163</y>
     </hint>
     <hint type="destinationlabel">
      <x>388</x>
@@ -829,8 +819,8 @@
    <slot>insertDBV0()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>504</x>
-     <y>235</y>
+     <x>610</x>
+     <y>163</y>
     </hint>
     <hint type="destinationlabel">
      <x>516</x>
@@ -845,8 +835,8 @@
    <slot>deleteDBV0()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>164</x>
-     <y>235</y>
+     <x>199</x>
+     <y>163</y>
     </hint>
     <hint type="destinationlabel">
      <x>201</x>
@@ -861,8 +851,8 @@
    <slot>openDataV0()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>667</x>
-     <y>235</y>
+     <x>809</x>
+     <y>163</y>
     </hint>
     <hint type="destinationlabel">
      <x>753</x>
@@ -877,8 +867,8 @@
    <slot>open_fct_fournie_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>473</x>
-     <y>343</y>
+     <x>588</x>
+     <y>311</y>
     </hint>
     <hint type="destinationlabel">
      <x>559</x>
@@ -893,8 +883,8 @@
    <slot>open_fct_fournie_2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>449</x>
-     <y>369</y>
+     <x>554</x>
+     <y>343</y>
     </hint>
     <hint type="destinationlabel">
      <x>553</x>
@@ -925,8 +915,8 @@
    <slot>open_fct_comp_1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>461</x>
-     <y>422</y>
+     <x>570</x>
+     <y>414</y>
     </hint>
     <hint type="destinationlabel">
      <x>565</x>
@@ -941,8 +931,8 @@
    <slot>deleteDBV1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>148</x>
-     <y>274</y>
+     <x>199</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>213</x>
@@ -957,8 +947,8 @@
    <slot>createDBV1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>299</x>
-     <y>273</y>
+     <x>375</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>344</x>
@@ -973,8 +963,8 @@
    <slot>insertDBV1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>492</x>
-     <y>274</y>
+     <x>610</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>541</x>
@@ -989,12 +979,28 @@
    <slot>openDataV1()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>653</x>
-     <y>276</y>
+     <x>809</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
      <x>703</x>
      <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_10</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_fct_dev_1_2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>574</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>757</x>
+     <y>568</y>
     </hint>
    </hints>
   </connection>
@@ -1015,5 +1021,6 @@
   <slot>deleteDBV1()</slot>
   <slot>openDataV1()</slot>
   <slot>slot1()</slot>
+  <slot>open_fct_dev_1_2()</slot>
  </slots>
 </ui>
