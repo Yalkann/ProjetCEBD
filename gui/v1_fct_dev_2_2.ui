@@ -170,15 +170,15 @@
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
    <receiver>tablesData</receiver>
-   <slot>refreshResult()</slot>
+   <slot>refreshResultDev2()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1035</x>
-     <y>26</y>
+     <x>996</x>
+     <y>33</y>
     </hint>
     <hint type="destinationlabel">
-     <x>983</x>
-     <y>5</y>
+     <x>891</x>
+     <y>186</y>
     </hint>
    </hints>
   </connection>
@@ -187,6 +187,6 @@
   <slot>refreshSpectaclesData()</slot>
   <slot>refreshZonesData()</slot>
   <slot>refreshRepresentationsData()</slot>
-  <slot>refreshResult()</slot>
+  <slot>refreshResultDev2()</slot>
  </slots>
 </ui>
