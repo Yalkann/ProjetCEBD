@@ -1004,6 +1004,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_11</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_fct_dev_2_2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>632</x>
+     <y>601</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>801</x>
+     <y>612</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>createDBV0()</slot>
@@ -1022,5 +1038,6 @@
   <slot>openDataV1()</slot>
   <slot>slot1()</slot>
   <slot>open_fct_dev_1_2()</slot>
+  <slot>open_fct_dev_2_2()</slot>
  </slots>
 </ui>
